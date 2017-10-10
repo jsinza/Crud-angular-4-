@@ -1,0 +1,59 @@
+<form novalidate (ngSubmit)="submit()" #productForm="ngForm" *ngIf="product">
+    <img
+      *ngIf="btn === 'Editar'"
+      src="http://localhost:3000/app-products/{{product.picture}}"
+      class="img-responsive" width="300"
+    />
+  
+    <div class="form-group">
+      <label for="name">Nombre</label>
+      <input
+        type="text"
+        id="name"
+        class="form-control"
+        required
+        name="name"
+        [(ngModel)]="product.name"
+      />
+    </div>
+  
+    <div class="form-group">
+      <label for="price">Precio</label>
+      <input type="text" name="price" id="price" required [(ngModel)="product.price"]>
+    </div>
+  
+    <div class="form-group" *ngIf="btn === 'Crear'">
+      <label for="picture">Imagen</label>
+      <input
+        type="file"
+        name="picture"
+        id="picture"
+        (change)="setPicture($event.target.files[0])"
+      />
+    </div>
+  
+    <div class="form-group">
+      <label for="price">Descripción</label>
+      <textarea
+        [(ngModel)]="product.description"
+        name="description"
+        class="form-control"
+      >
+      </textarea>
+    </div>
+  
+    <hr />
+  
+    <div class="form-group">
+      <button
+        type="submit"
+        class="btn btn-block btn-success"
+      >
+        {{ btn }}
+      </button>
+  
+      <a routerLink="/products" class="btn btn-block btn-warning">Volver</a>
+    </div>
+  
+  </form>
+  

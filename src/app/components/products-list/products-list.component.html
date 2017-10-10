@@ -1,0 +1,27 @@
+<div class="col-md-12">
+  <div class="panel panel-default">
+    <div class="panel-heading"> tabla de productos</div>
+    <div class="panel-body">
+      <table class="table">
+        <thead>
+          <th>Id</th>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Acciones</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products">
+        <td>{{product.id}}</td>
+        <td>{{product.name}}</td>
+        <td>{{product.price}}</td>
+        <td>
+        <a class="btn btn-sm btn-info"routerLink="/products/{{product.id}}/detail">Detalles</a>
+        <a class="btn btn-sm btn-primary" routerLink="/products/{{product.id}}/edit">Editar</a>
+        <a class="btn btn-sm btn-danger" (click)="remove(product)" >Borrar</a>
+        </td> 
+        </tr>  
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
